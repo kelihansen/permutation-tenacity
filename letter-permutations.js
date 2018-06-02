@@ -173,9 +173,11 @@ console.timeEnd();
 
 Heap's algorithm, step by step
 
+Basics:
+
 function(n,  array) {
     to kick things off, n should equal the length of the array minus 1 (i.e. the index of the last element)
-    1) if n is 0, join & console.log the array
+    1) if n is 0, join & console.log the array (though I ended up changing this for comparison with Marty's functions)
     2) otherwise, step through the array until i (which starts as 0) equals n
         a) inside this loop, start by running THIS VERY FUNCTION with n - 1 as the first argument
         b) if n is odd, swap the value at i with the value at index n
@@ -183,7 +185,9 @@ function(n,  array) {
     3) after exiting the loop, call our handy recursive function one last time with n - 1 as the first argument
 }
 
-function(n = 3, array = [a, b, c, d]);
+Example:
+
+function(n = 3, array = [a, b, c, d])
 
 n isn't 0, so move on
 step through the array until i equals n
@@ -204,7 +208,7 @@ step through the array until i equals n
                 }
             we've done a swap, but we haven't logged it - let's finish by calling our recursive function once more with n - 1 as the first argument
             recall that n equals 1, so call function(n = 0, array = [b, a, c, d])
-            because n is 0, this just logs 'bacd'
+                because n is 0, this just logs 'bacd'
             functions complete!
             }
         now we're back in a loop where n = 2 and i = 0
