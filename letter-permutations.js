@@ -168,6 +168,7 @@ console.log('Keli with Heap\'s:', getPermutations(5));
 console.timeEnd();
 // when integer = 10, takes about 4 seconds
 // when integer = 11, takes about a minute
+// will never be able to handle integer = 26 as written, because JS arrays can hold 4,294,967,295 elements and 26! is more like 403,291,460,000,000,000,000,000,000
 
 /* 
 
