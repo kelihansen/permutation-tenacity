@@ -25,7 +25,12 @@ function getPermImp(n) {
     }
 }
 
-console.log('Marty imperative:', getPermImp(3));
+console.time();
+console.log('Marty imperative:', getPermImp(5));
+console.timeEnd();
+// when n = 10, takes about 8 seconds
+// when n = 11 "paused before potential out-of-memory crash"
+
 
 // Marty declarative
 function getPermDec(n) {
@@ -43,6 +48,12 @@ function getPermDec(n) {
         }, []);
     }
 }
+
+console.time();
+console.log('Marty declarative:', getPermDec(5));
+console.timeEnd();
+// zippy up to n = 9
+// when n = 10 "maximum call stack size exceeded"
 
 /* 
 
@@ -127,11 +138,10 @@ we push those elements into this function's "sets", which gets returned from the
 
 */
 
-console.log('Marty declarative:', getPermDec(3));
-
 // Keli with Heap's algorithm
 function getPermutations(integer) {
-    if(integer < 1) return console.log('');
+    const result = [];
+    if(integer < 1) return result;
 
     const letterArray = alphabet.slice(0, integer);
     const endIndex = integer - 1;
@@ -140,10 +150,11 @@ function getPermutations(integer) {
         [array[index1], array[index2]] = [array[index2], array[index1]];
     }
 
-    return recurse(endIndex, letterArray);
-    
+    recurse(endIndex, letterArray);
+    return result;
+
     function recurse(end, letters) {
-        if(!end) return console.log(letters.join(''));
+        if(!end) return result.push(letters.join(''));
         for(let i = 0; i < end; i++) {
             recurse(end - 1, letters);
             end % 2 ? swap(letters, i, end) : swap(letters, 0, end);
@@ -152,8 +163,11 @@ function getPermutations(integer) {
     }
 }
 
-console.log('Keli with Heap\'s:');
-console.log(getPermutations(3));
+console.time();
+console.log('Keli with Heap\'s:', getPermutations(5));
+console.timeEnd();
+// when integer = 10, takes about 4 seconds
+// when integer = 11, takes about a minute
 
 /* 
 
